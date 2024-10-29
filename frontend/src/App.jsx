@@ -38,11 +38,18 @@ function App() {
   }, []);
 
   return (
-    <div>
-      {data && data.map((item) => (
-        <div key={item._id}>{item.name}</div>
-      ))}
-    </div>
+    <><nav className="nav-bar">
+      <input type="search" />
+    </nav>
+    <div className="container">
+        {data && data.map((country) => (
+          <article key={country._id}>
+            <img src={country.img}></img>
+            <h1>{country.name}</h1><br></br>
+            <h2>{country.age}</h2>
+          </article>
+        ))}
+      </div></>
   );
 }
 
