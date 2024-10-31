@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import styles from "./App.module.css";
+import "./Normal.css"
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import EditCountry from "./EditCountry.jsx"
-// import NewCountry from "./NewCountry.jsx"
+import NewCountry from "./NewCountry.jsx"
 
 
 // function throttle(func, limit) {
@@ -53,26 +54,29 @@ function App() {
     navigate(`/edit/${country._id}`, { state: { country } });
   };
 
+
+
   return (
-          <div className="container">
+          <div className={styles.container}>
+            <button onClick={() => navigate('/add-country')}>Agregar País</button>
             {data && data.map((country) => (
-              <article key={country._id} className="card">
-                <div className="imgcountry">
+              <article key={country._id} className={styles.card}>
+                <div className={styles.imgcountry}>
                   <img src={country.img}></img>
                 </div>
-                <div className="container-text">
-                  <div className="title"> 
+                <div className={styles.container_text}>
+                  <div className={styles.title}> 
                     <h1>{country.name}</h1>
                   </div>
-                  <div className="text">
+                  <div className={styles.text}>
                     <h2>edad: {country.age}</h2>
                     <h2>poblacion: {country.population}</h2>
                     <h2>continente: {country.region}</h2>
                   </div>
                 </div>
-                <div className="container-button">
-                  <button className="edit" onClick={() => handleEditClick(country)}>editar</button>
-                  <button className="delete" onClick={() =>handleDelete(country._id)}>eliminar</button>
+                <div className={styles.container_button}>
+                  <button className={styles.edit} onClick={() => handleEditClick(country)}>editar</button>
+                  <button className={styles.delete} onClick={() =>handleDelete(country._id)}>eliminar</button>
                 </div>
               </article>
               ))}
@@ -85,7 +89,7 @@ function MainApp() {
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/edit/:id" element={<EditCountry/>} />
-      {/* <Route path="/new" element={<NewCountry/>} /> */}
+      <Route path="/add-country" element={<NewCountry/>} />
     </Routes>
   );
 }

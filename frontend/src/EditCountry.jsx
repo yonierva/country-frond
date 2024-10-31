@@ -1,5 +1,6 @@
 import { useNavigate, useLocation  } from 'react-router-dom';
 import { useState } from 'react';
+import styles from "./EditCountry.module.css"
 
 function EditCountry() {
   const location = useLocation();
@@ -48,11 +49,14 @@ function EditCountry() {
   };
 
     return (
-        <div>
+        <div className={styles.container_form}>
+            <form onSubmit={handleSubmit} className={styles.form}>
             <h2>Edit Country</h2>
-            <form onSubmit={handleSubmit}>
                 <label>Name:</label>
                 <input type="text" name="name" value={formData.name} onChange={handleChange} />
+
+                <label>imagen:</label>
+                <input type="text" name="img" value={formData.img} onChange={handleChange} />
 
                 <label>Age:</label>
                 <input type="number" name="age" value={formData.age} onChange={handleChange} />
