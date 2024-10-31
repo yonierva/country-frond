@@ -1,20 +1,20 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
 body{
-    background:radial-gradient(circle at left top, #7c797a,#222 70%);
+    /* background:radial-gradient(circle at left top, #7c797a,#222 70%); */
+    background-color: #222;
     color: #fff;
     height: 100vh;
 }
 
 .root{
-    height: 100vh;
+    height: 100%;
 }
-/* barra nav */
-
-.nav-bar{
-    background-color: #570148;
-    display: block;
-}
-/* fin barra nav */
-
 /* tarjetas */
 
 .container{
@@ -22,13 +22,88 @@ body{
     flex-wrap: wrap;    
     justify-content: space-evenly;
     width: 100%;
+    margin-top: 30px;
 }
 
-article{
-    border: solid 1px #fff;
-    width: 500px;
+/* imagen */
+.imgcountry{
+    margin: auto;
+    width: 100%;
+    height: 200px;
+    display: inline-block;
+}
+
+.imgcountry img{
+    width: 100%;
+    height: 100%;
+}
+/* fin imagen */
+
+/* texto */
+.container-text{
+    width: 100%;
+    height: 40%;
     padding: 10px;
+}
+
+
+.title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+}
+
+.text h2{
+    margin:5px;
+}
+/* fin texto */
+
+.card{
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    height: 430px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,2);
     margin: 10px;
 }
+
+/* botones */
+.container-button{
+    display: flex;
+    width: 100%;
+    height: 14%;
+    justify-content: space-evenly;
+}
+
+.container-button button{
+    width: 80px;
+    height: 40px;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 16px;
+    transition: .3s linear;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+}
+
+.edit:hover{
+   background-color: #34d399;
+   box-shadow: 0 0 5px #34d399, 0 0 15px #34d399, 0 0 20px #34d399,0 0 30px #34d399, 0 0 50px #34d399;
+   border: none;
+}
+
+.delete:hover{
+    background-color: #ff6666;
+   box-shadow: 0 0 5px #ff6666, 0 0 15px #ff6666, 0 0 20px #ff6666,0 0 30px #ff6666, 0 0 50px #ff6666;
+   border: none;
+}
+/* fin botones */
 
 /* fin tarejas */
