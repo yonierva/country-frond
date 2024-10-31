@@ -24,27 +24,30 @@ function EditCountry() {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: name === 'age' ? parseInt(value) : value, // Convierte a número si el campo es 'age'
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const response = await fetch(`http://localhost:4000/country/${country._id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      navigate('/'); // Redirigir después de la actualización
-    } else {
-      const errorData = await response.json();
-      console.error('Error updating country:', errorData);
-      // Manejar el error
+    try {
+      const response = await fetch(`http://localhost:4000/country/${country._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        navigate('/'); // Redirigir después de la actualización
+      } else {
+        const errorData = await response.json();
+        console.error('Error updating country:', errorData);
+        // Manejar el error
+      }
+    } catch (error) {
+      console.error('Network error:', error);
     }
   };
 
@@ -52,22 +55,30 @@ function EditCountry() {
         <div className={styles.container_form}>
             <form onSubmit={handleSubmit} className={styles.form}>
             <h2>Edit Country</h2>
-                <label>Name:</label>
+                <label >Name:</label>
                 <input type="text" name="name" value={formData.name} onChange={handleChange} />
 
                 <label>imagen:</label>
                 <input type="text" name="img" value={formData.img} onChange={handleChange} />
 
-                <label>Age:</label>
+                <label >Age:</label>
                 <input type="number" name="age" value={formData.age} onChange={handleChange} />
 
-                <label>Population:</label>
+                <label >Population:</label>
                 <input type="text" name="population" value={formData.population} onChange={handleChange} />
 
                 <label>Region:</label>
-                <input type="text" name="region" value={formData.region} onChange={handleChange} />
+                <select name="region" value={formData.region} onChange={handleChange} required>
+                  <option value="">Selecciona región</option>
+                  <option value="norteamerica">Norteamérica</option>
+                  <option value="suramerica">Suramérica</option>
+                  <option value="europa">Europa</option>
+                  <option value="africa">África</option>
+                  <option value="asia">Asia</option>
+                  <option value="oceania">Oceanía</option>
+                </select>
 
-                <button type="submit">Update Country</button>
+                <button type="submit">guardar</button>
             </form>
         </div>
     );

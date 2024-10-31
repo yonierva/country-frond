@@ -58,7 +58,7 @@ function App() {
 
   return (
           <div className={styles.container}>
-            <button onClick={() => navigate('/add-country')}>Agregar País</button>
+            <button onClick={() => navigate('/add-country')}  className={styles.btn_add}>+</button>
             {data && data.map((country) => (
               <article key={country._id} className={styles.card}>
                 <div className={styles.imgcountry}>
